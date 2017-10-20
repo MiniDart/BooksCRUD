@@ -24,6 +24,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public List<Book> getAll() {
         return sessionFactory.getCurrentSession().createQuery("FROM Book").list();
     }

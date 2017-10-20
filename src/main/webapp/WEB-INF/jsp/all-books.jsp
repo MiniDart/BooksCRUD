@@ -7,13 +7,11 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<h1>Books</h1>
+<c:import url="header.jsp">
+    <c:param name="headTitle" value="All books"/>
+    <c:param name="headerTitle" value="Book list"/>
+    <c:param name="cssLink" value="/resources/css/all-books.css"/>
+</c:import>
 <table>
     <c:forEach items="${books}" var="book">
         <tr>
@@ -21,5 +19,4 @@
         </tr>
     </c:forEach>
 </table>
-</body>
-</html>
+<c:import url="footer.jsp"/>
