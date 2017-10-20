@@ -1,0 +1,6 @@
+USE test;
+
+INSERT INTO BOOK (TITLE,DESCRIPTION,AUTHOR,ISBN,PRINT_YEAR,READ_ALREADY) VALUES ("The Cather In the Rye", "Do you want to reminisce how it was? To be a teenager. If you do, welcome.",
+"Jerome David Salinger","1223-21321-123123",1951,0);
+INSERT INTO BOOK (TITLE,DESCRIPTION,AUTHOR,ISBN,PRINT_YEAR,READ_ALREADY) VALUES ("The Great Gatsby","Do you doubt you can repeat the past? Of course you can, old sport!",
+"Francis Scott Key Fitzgerald","234234-23423-234234",1925,0);
