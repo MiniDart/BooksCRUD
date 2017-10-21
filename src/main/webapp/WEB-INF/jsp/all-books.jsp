@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:import url="header.jsp">
     <c:param name="headTitle" value="All books"/>
-    <c:param name="headerTitle" value="Book list"/>
+    <c:param name="headerTitle" value="Книги"/>
     <c:param name="cssLink" value="/resources/css/all-books.css"/>
 </c:import>
 <table>

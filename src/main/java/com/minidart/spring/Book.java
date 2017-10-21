@@ -6,23 +6,23 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "BOOK")
+@Table(name = "book")
 public class Book {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = IDENTITY)
     private long id;
-    @Column(name = "TITLE")
+    @Column(name = "title")
     private String title;
-    @Column(name = "DESCRIPTION")
+    @Column(name = "description")
     private String description;
-    @Column(name = "AUTHOR")
+    @Column(name = "author")
     private String author;
-    @Column(name = "ISBN")
+    @Column(name = "isbn")
     private String isbn;
-    @Column(name = "PRINT_YEAR")
+    @Column(name = "printYear")
     private int printYear;
-    @Column(name = "READ_ALREADY")
+    @Column(name = "readAlready")
     private boolean readAlready;
 
     public long getId() {
