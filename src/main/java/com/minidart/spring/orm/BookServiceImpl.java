@@ -1,5 +1,6 @@
 package com.minidart.spring.orm;
 
+import com.minidart.spring.containers.SearchContainer;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public List<Book> getAll() {
-        return sessionFactory.getCurrentSession().createQuery("FROM Book").list();
+    public List<Book> getBooksId(SearchContainer container) {
+        String query="FROM Book AS b WHERE b.id=1";
+        return sessionFactory.getCurrentSession().createQuery(query).list();
     }
 }

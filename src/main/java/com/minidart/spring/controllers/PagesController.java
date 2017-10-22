@@ -22,7 +22,7 @@ public class PagesController {
 
     @RequestMapping("library")
     public String showMessage(Model model){
-        model.addAttribute("books",bookService.getAll());
+        model.addAttribute("books","hello");
         return "books-page";
     }
 }

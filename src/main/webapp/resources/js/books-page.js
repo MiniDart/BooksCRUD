@@ -1,7 +1,7 @@
 
 var cxt={
     sort:null,
-    author:null,
+    author:"Пратчетт",
     title:null,
     isbn:null,
     yearFrom:null,
@@ -33,6 +33,7 @@ function fillCxt() {
 }
 
 $(document).ready(function ($) {
+    fillCxt();
     getBooks(function (data) {
         console.log(data);
     })
