@@ -11,9 +11,14 @@
 <html>
 <head>
     <title>${param.headTitle}</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/common.css"/> ">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"/> ">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/common.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/header.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="${param.cssLink}"/>">
+    <script>
+        var home="${pageContext.request.contextPath}";
+    </script>
+    <script src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
+    <script src="<c:url value="${param.jsLink}"/>"></script>
 </head>
 <body>
 <header>

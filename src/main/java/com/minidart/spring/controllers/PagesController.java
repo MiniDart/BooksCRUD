@@ -1,5 +1,6 @@
-package com.minidart.spring;
+package com.minidart.spring.controllers;
 
+import com.minidart.spring.orm.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 @Controller
-public class BookController {
+@RequestMapping("pages")
+public class PagesController {
     @Resource(name = "bookService")
     private BookService bookService;
     public BookService getBookService() {
@@ -18,7 +20,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("library")
     public String showMessage(Model model){
         model.addAttribute("books",bookService.getAll());
         return "books-page";

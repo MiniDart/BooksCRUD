@@ -11,6 +11,7 @@
     <c:param name="headTitle" value="All books"/>
     <c:param name="headerTitle" value="Книги"/>
     <c:param name="cssLink" value="/resources/css/books-page.css"/>
+    <c:param name="jsLink" value="/resources/js/books-page.js"/>
 </c:import>
 <div class="wrapper">
     <div class="search-wrapper">
@@ -28,8 +29,8 @@
     <div class="books-wrapper">
         <div class="sort">
             Сортировать по:
-            <select>
-                <option value="author">Автор от А до Я</option>
+            <select id="sort_select">
+                <option value="author" selected>Автор от А до Я</option>
                 <option value="authorDesc">Автор от Я до А</option>
                 <option value="year">По году с наиболее раннего</option>
                 <option value="yearDesc">По году с наиболее позднего</option>

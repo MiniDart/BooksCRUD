@@ -1,4 +1,4 @@
-package com.minidart.spring;
+package com.minidart.spring.orm;
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
