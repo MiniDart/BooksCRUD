@@ -21,6 +21,6 @@ public class BookController {
     @RequestMapping("/")
     public String showMessage(Model model){
         model.addAttribute("books",bookService.getAll());
-        return "all-books";
+        return "books-page";
     }
 }

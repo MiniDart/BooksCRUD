@@ -1,0 +1,9 @@
+header{
+    height:7vh;
+}
+header h1{
+    font-size: 3rem;
+    height: 7vh;
+    line-height: 7vh;
+    border-bottom: 1px solid white;
+}

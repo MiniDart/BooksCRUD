@@ -1,0 +1,26 @@
+.wrapper{
+    display: flex;
+    min-height: 93vh;
+}
+.search-wrapper{
+    width: 15vw;
+    min-height: 93vh;
+    border-right: 1px solid white;
+    padding: 1vh 1vw 0 1vw ;
+}
+.search-wrapper p{
+    margin-top:1vh;
+}
+.search-wrapper .big_input{
+    width: 12vw;
+}
+.search-wrapper .small_input{
+    width: 4vw;
+}
+.books-wrapper{
+    width: 85vw;
+}
+.books-wrapper .sort{
+    padding: 2vh 0 1vh 2vw;
+    border-bottom: 1px solid white;
+}

@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 2vh;
+    background: #4a4c93;
+    color:white;
+    font-family: Arial,sans-serif;
+    box-sizing: border-box;
+}
+h1,h2,body,div,header,footer{
+    box-sizing: border-box;
+}
+h1,h2{
+    text-align: center;
+}
