@@ -24,3 +24,38 @@
     padding: 2vh 0 1vh 2vw;
     border-bottom: 1px solid white;
 }
+.list-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.books-wrapper .book_item_wrapper{
+    margin-top: 3vh;
+    display: flex;
+    border: 1px solid white;
+}
+.books-wrapper .book table{
+    width: 28vw;
+    border-collapse: collapse;
+    border-style: hidden;
+}
+.books-wrapper .book td{
+    border: 1px solid white;
+}
+.books-wrapper .book{
+    border: 1px solid white;
+}
+.books-wrapper .book .text{
+    text-align: center;
+    padding: 1vh 1vw 1vh 1vw;
+}
+.books-wrapper .edit_box{
+    border-left: 1px solid white;
+    width: 10vw;
+}
+.books-wrapper .edit_box div{
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    text-align: center;
+    padding: 1vh 1vw 1vh 1vw;
+}

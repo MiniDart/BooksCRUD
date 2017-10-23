@@ -8,4 +8,5 @@ public interface BookService {
     Book getById(long id);
     List<Book> getBooksId(SearchContainer container);
     void save(Book book);
+    List<Book> getBooks(Integer[] idList);
 }

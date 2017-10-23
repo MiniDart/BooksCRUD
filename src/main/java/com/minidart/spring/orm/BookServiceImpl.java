@@ -53,4 +53,14 @@ public class BookServiceImpl implements BookService {
         query+=orderBy;
         return sessionFactory.getCurrentSession().createQuery(query).list();
     }
+
+    @Override
+    public List<Book> getBooks(Integer[] idList) {
+        StringBuilder builder=new StringBuilder("FROM Book as b WHERE b.id IN (");
+        for (int i=0;i<idList.length-1;i++){
+            builder.append(idList[i]+", ");
+        }
+        builder.append(idList[idList.length-1]+")");
+        return sessionFactory.getCurrentSession().createQuery(builder.toString()).list();
+    }
 }

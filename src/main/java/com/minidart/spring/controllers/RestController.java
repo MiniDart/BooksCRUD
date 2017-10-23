@@ -37,4 +37,15 @@ public class RestController {
         }
         return res;
     }
+    @RequestMapping(value = "books",method = RequestMethod.GET)
+    public List<Book> getBooksList(@RequestParam(value = "param") String param){
+        Integer[] idList;
+        try {
+            idList=new ObjectMapper().readValue(new StringReader(param),Integer[].class);
+        }
+        catch (IOException e){
+            idList=null;
+        }
+        return bookService.getBooks(idList);
+    }
 }
