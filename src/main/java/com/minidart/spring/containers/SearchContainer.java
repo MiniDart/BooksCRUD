@@ -58,4 +58,14 @@ public class SearchContainer {
     public void setYearTo(Integer yearTo) {
         this.yearTo = yearTo;
     }
+    public boolean hasFilters(){
+        return author!=null||title!=null||isbn!=null||yearFrom!=null||yearTo!=null;
+    }
+    public void checkValid(){
+        if (yearFrom==null||yearTo==null) return;
+        if (yearTo<yearFrom){
+            yearTo=null;
+            yearFrom=null;
+        }
+    }
 }

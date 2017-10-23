@@ -19,8 +19,8 @@ import java.util.List;
 public class RestController {
     @Resource(name = "bookService")
     private BookService bookService;
-    @RequestMapping(value = "",method = RequestMethod.GET)
-    public List<Long> doGet(@RequestParam(value="param") String param){
+    @RequestMapping(value = "id-list",method = RequestMethod.GET)
+    public List<Long> getIdList(@RequestParam(value="param") String param){
         SearchContainer container;
         try {
             container=new ObjectMapper().readValue(new StringReader(param),SearchContainer.class);

@@ -17,14 +17,14 @@
     <div class="search-wrapper">
         <h2>Поиск</h2>
         <p>По автору:</p>
-        <p><input id="author_input" class="big_input" type="text"></p>
+        <p><input id="author_input" class="big_input" type="text" value="Пратчетт"></p>
         <p>По названию:</p>
-        <p><input id="title_input" class="big_input" type="text"></p>
+        <p><input id="title_input" class="big_input" type="text" value="Жнец"></p>
         <p>По ISBN:</p>
         <p><input id="isbn_input" class="big_input" type="text"></p>
         <p>По году издания:</p>
         <p>с <input id="year_start_input" class="small_input" type="text"> по <input id="year_end_input" class="small_input" type="text"></p>
-        <p><button>Найти</button></p>
+        <p><button id="search_button">Найти</button></p>
     </div>
     <div class="books-wrapper">
         <div class="sort">

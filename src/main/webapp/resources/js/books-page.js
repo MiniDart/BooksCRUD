@@ -1,7 +1,7 @@
 
 var cxt={
     sort:null,
-    author:"Пратчетт",
+    author:null,
     title:null,
     isbn:null,
     yearFrom:null,
@@ -9,8 +9,8 @@ var cxt={
 };
 
 
-function getBooks(callback) {
-   $.get(home+"/app/rest",
+function getBooksId(callback) {
+   $.get(home+"/app/rest/id-list",
        {
            param:JSON.stringify(cxt)
        },
@@ -32,9 +32,15 @@ function fillCxt() {
     cxt.yearTo=yearToVal.length==0?null:yearToVal;
 }
 
+function initialization() {
+    $("#search_button").on("click",function () {
+        fillCxt();
+        getBooksId(function (data) {
+            console.log(data);
+        });
+    });
+}
+
 $(document).ready(function ($) {
-    fillCxt();
-    getBooks(function (data) {
-        console.log(data);
-    })
-})
+    initialization();
+});
