@@ -8,8 +8,27 @@ var cxt={
     yearTo:null
 };
 
+var updateObj={
+    id:null,
+    title:null,
+    description:null,
+    isbn:null,
+    printYear:null,
+    readAlready:null,
+    clear:function () {
+        this.id=null;
+        this.title=null;
+        this.description=null;
+        this.isbn=null;
+        this.printYear=null;
+        this.readAlready=null;
+    }
+}
+
 var page;
+
 var arrIdBooks=[];
+
 function fillCxt() {
     var authorVal=$("#author_input").val();
     var titleVal=$("#title_input").val();
@@ -44,6 +63,17 @@ function getBooks(IdToRender,callback) {
 }
 
 
+function putData(data,callback) {
+    $.ajax({
+        url:home+"/app/rest/books",
+        type:"PUT",
+        data:JSON.stringify(data),
+        success:callback,
+        contentType:"application/json"
+    })
+}
+
+
 function renderBooks(books) {
     for (var i=0;i<books.length;i++){
         var book=books[i];
@@ -65,9 +95,16 @@ function renderBooks(books) {
             "<tr><td colspan='3'><p class='text'>"+book.description+"</p></td></tr></table>"+
             "</div></div>");
         var editBoxDom=$("<div class='edit_box'></div>");
-        if (!book.readAlready) editBoxDom.append($("<div>Отметить как прочитано</div>")
+        if (!book.readAlready) editBoxDom.append($("<div data-id='"+book.id+"'>Отметить как прочитано</div>")
             .on("click",function (e) {
-
+                updateObj.id=$(this).attr("data-id");
+                updateObj.readAlready=true;
+                var thisElement=this;
+                putData(updateObj,function (data) {
+                    console.log(data);
+                    $(thisElement).remove();
+                    updateObj.clear();
+                })
             }));
         editBoxDom.append($("<div>Изменить</div>")
             .on("click",function (e) {

@@ -16,3 +16,7 @@ h1,h2,body,div,header,footer{
 h1,h2{
     text-align: center;
 }
+footer{
+    border-top: 1px solid white;
+    height: 5vh;
+}

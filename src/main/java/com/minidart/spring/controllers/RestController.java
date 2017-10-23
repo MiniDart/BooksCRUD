@@ -1,9 +1,12 @@
 package com.minidart.spring.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.minidart.spring.containers.PutContainer;
+import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
 import com.minidart.spring.orm.Book;
 import com.minidart.spring.orm.BookService;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,5 +50,11 @@ public class RestController {
             idList=null;
         }
         return bookService.getBooks(idList);
+    }
+    @RequestMapping(value = "books",method = RequestMethod.PUT)
+    public ResponseContainer putBook(@RequestBody PutContainer container){
+        ResponseContainer responseContainer=bookService.update(container);
+        responseContainer.setStatus("OK");
+        return responseContainer;
     }
 }

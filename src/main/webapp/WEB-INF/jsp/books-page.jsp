@@ -39,6 +39,10 @@
         <div class="list-wrapper">
 
         </div>
+        <div class="button_wrapper">
+            <div id="left_button">Назад</div>
+            <div id="right_button">Вперёд</div>
+        </div>
     </div>
 </div>
 <c:import url="footer.jsp"/>

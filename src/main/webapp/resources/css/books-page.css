@@ -32,7 +32,7 @@
 .books-wrapper .book_item_wrapper{
     margin-top: 3vh;
     display: flex;
-    border: 1px solid white;
+    border: 2px solid #2a2d93;
 }
 .books-wrapper .book table{
     width: 28vw;
@@ -43,9 +43,11 @@
     border: 1px solid white;
 }
 .books-wrapper .book{
-    border: 1px solid white;
+    font-size: 0.7rem;
+    border-right: 1px solid white;
 }
 .books-wrapper .book .text{
+    font-size: 1rem;
     text-align: center;
     padding: 1vh 1vw 1vh 1vw;
 }
@@ -58,4 +60,28 @@
     cursor: pointer;
     text-align: center;
     padding: 1vh 1vw 1vh 1vw;
+}
+.books-wrapper .edit_box div:hover{
+    background: white;
+    color:#4a4c93;
+}
+.button_wrapper{
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+}
+.button_wrapper div{
+    border: 1px solid white;
+    cursor: pointer;
+}
+.button_wrapper div:hover{
+    background: white;
+    color:#4a4c93;
+}
+#left_button{
+    margin-right: 1vw;
+}
+#right_button{
+    margin-left: 1vw;
 }

@@ -1,5 +1,7 @@
 package com.minidart.spring.orm;
 
+import com.minidart.spring.containers.PutContainer;
+import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
@@ -62,5 +64,17 @@ public class BookServiceImpl implements BookService {
         }
         builder.append(idList[idList.length-1]+")");
         return sessionFactory.getCurrentSession().createQuery(builder.toString()).list();
+    }
+
+    @Override
+    public ResponseContainer update(PutContainer container) {
+        ResponseContainer responseContainer=new ResponseContainer();
+        if (container.isReadAlready()){
+            String query="UPDATE Book AS b set b.readAlready=true WHERE b.id=:id";
+            int count=sessionFactory.getCurrentSession().createQuery(query).setParameter("id",container.getId())
+            .executeUpdate();
+            responseContainer.setCount(count);
+        }
+        return responseContainer;
     }
 }
