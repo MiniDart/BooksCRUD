@@ -6,10 +6,7 @@ import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
 import com.minidart.spring.orm.Book;
 import com.minidart.spring.orm.BookService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -60,5 +57,18 @@ public class RestController {
     @RequestMapping(value = "books",method = RequestMethod.POST)
     public ResponseContainer addBook(@RequestBody Book book){
         return bookService.save(book);
+    }
+    @RequestMapping(value = "books/{bookId}",method = RequestMethod.DELETE)
+    public ResponseContainer deleteBook(@PathVariable String bookId){
+        ResponseContainer responseContainer=new ResponseContainer();
+        long id;
+        try {
+            id=Long.parseLong(bookId);
+        }
+        catch (NumberFormatException e){
+            responseContainer.setStatus(e.getMessage());
+            return responseContainer;
+        }
+        return bookService.delete(id);
     }
 }

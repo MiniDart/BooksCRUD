@@ -7,7 +7,7 @@ import com.minidart.spring.containers.SearchContainer;
 import java.util.List;
 
 public interface BookService {
-    Book getById(long id);
+    ResponseContainer delete(long id);
     List<Book> getBooksId(SearchContainer container);
     ResponseContainer save(Book book);
     List<Book> getBooks(GetBooksContainer container);

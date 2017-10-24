@@ -59,6 +59,9 @@
     text-align: center;
     padding: 1vh 1vw 1vh 1vw;
 }
+.books-wrapper .imp{
+    color:#64d8ff;
+}
 .books-wrapper .edit_box{
     border-left: 1px solid white;
     width: 10vw;
@@ -137,4 +140,5 @@
     position: absolute;
     right: 0;
     top:0;
+    cursor: pointer;
 }

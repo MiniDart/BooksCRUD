@@ -8,8 +8,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:import url="header.jsp">
-    <c:param name="headTitle" value="All books"/>
-    <c:param name="headerTitle" value="Книги"/>
+    <c:param name="headTitle" value="Book manager"/>
+    <c:param name="headerTitle" value="Библиотека"/>
     <c:param name="cssLink" value="/resources/css/books-page.css"/>
     <c:param name="jsLink" value="/resources/js/books-page.js"/>
 </c:import>
@@ -75,6 +75,30 @@
         <textarea id="new_description"></textarea>
         <div class="submit">
             <button id="new_book_submit">Добавить книгу</button>
+        </div>
+        <div class="cancel">X</div>
+    </div>
+</div>
+<div id="edit_book_form" class="back">
+    <div class="form">
+        <table>
+            <tr>
+                <td>Название:</td>
+                <td><input id="edit_title" type="text"></td>
+            </tr>
+            <tr>
+                <td>ISBN:</td>
+                <td><input id="edit_isbn" type="text"></td>
+            </tr>
+            <tr>
+                <td>Год издания:</td>
+                <td><input id="edit_print_year" type="text"></td>
+            </tr>
+        </table>
+        <p>Описание:</p>
+        <textarea id="edit_description"></textarea>
+        <div class="submit">
+            <button id="edit_book_submit">Редактировать книгу</button>
         </div>
         <div class="cancel">X</div>
     </div>

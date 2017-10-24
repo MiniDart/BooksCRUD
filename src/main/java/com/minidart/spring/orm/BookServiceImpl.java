@@ -29,10 +29,6 @@ public class BookServiceImpl implements BookService {
         return container;
     }
 
-    @Override
-    public Book getById(long id) {
-        return null;
-    }
 
     @Override
     @Transactional
@@ -89,6 +85,17 @@ public class BookServiceImpl implements BookService {
         }
         return responseContainer;
     }
+
+    @Override
+    public ResponseContainer delete(long id) {
+        Book book=new Book();
+        book.setId(id);
+        sessionFactory.getCurrentSession().delete(book);
+        ResponseContainer container=new ResponseContainer();
+        container.setStatus("OK");
+        return container;
+    }
+
     private String getOrderBy(String sort){
         String orderBy="ORDER BY ";
         if (sort.equals("author")) orderBy+="b.author";

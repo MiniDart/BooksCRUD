@@ -84,12 +84,18 @@ function addNewBook(data) {
         type:"POST",
         data:JSON.stringify(data),
         success:function (data) {
-            console.log(data);
+            getBooksIdAndShow();
         },
         contentType:"application/json"
     })
 }
 
+function deleteBook(id) {
+    $.ajax({
+        url:home+"/app/rest/books/"+id,
+        type:"DELETE"
+    })
+}
 
 function renderBooks(books) {
     var listWrapper=$("<div class='list-wrapper'></div>");
@@ -102,9 +108,9 @@ function renderBooks(books) {
                 "<table>" +
                 "<tr>" +
                 "<td><p>Автор:</p>" +
-                "<p class='text'>"+book.author+"</p></td>" +
+                "<p class='text imp'>"+book.author+"</p></td>" +
                 "<td><p>Название:</p>" +
-                "<p class='text'>"+book.title+"</p></td>" +
+                "<p class='text imp'>"+book.title+"</p></td>" +
                 "<td><p>Год издания:</p>" +
                 "<p class='text'>"+book.printYear+"</p></td></tr>" +
                 "<tr><td colspan='2'>" +
@@ -121,18 +127,20 @@ function renderBooks(books) {
                     updateObj.readAlready=true;
                     var thisElement=this;
                     putData(updateObj,function (data) {
-                        console.log(data);
                         $(thisElement).remove();
                         updateObj.clear();
                     })
                 }));
-            editBoxDom.append($("<div>Изменить</div>")
+            editBoxDom.append($("<div data-id='"+book.id+"'>Изменить</div>")
                 .on("click",function (e) {
-
+                    $("#edit_book_form").show();
+                    updateObj.id=$(this).attr("data-id");
                 }));
-            editBoxDom.append($("<div>Удалить</div>")
+            editBoxDom.append($("<div data-id='"+book.id+"'>Удалить</div>")
                 .on("click",function (e) {
-
+                    if (!confirm("Are you sure?")) return;
+                    deleteBook($(this).attr("data-id"));
+                    getBooksIdAndShow();
                 }));
             bookDom.append(editBoxDom);
             listWrapper.append(bookDom);
@@ -239,6 +247,29 @@ function initialization() {
     $("#new_book_form .cancel").on("click",function (e) {
         hideForm("new_book_form");
     });
+
+
+    $("#edit_book_submit").on("click",function (e) {
+        var editTitle=$("#edit_title").val();
+        var editIsbn=$("#edit_isbn").val();
+        var editDescription=$("#edit_description").val();
+        var editPrintYear=$("#edit_print_year").val();
+        updateObj.title=editTitle.length==0?null:editTitle;
+        updateObj.isbn=editIsbn.length==0?null:editIsbn;
+        updateObj.printYear=editPrintYear.length==0?null:editPrintYear;
+        updateObj.description=editDescription.length==0?null:editDescription;
+        putData(updateObj,function (data) {
+            updateObj.clear();
+            getBooksIdAndShow();
+        });
+        hideForm("edit_book_form");
+    });
+    $("#edit_book_form .cancel").on("click",function (e) {
+        hideForm("edit_book_form");
+        updateObj.clear();
+    });
+
+
     page=1;
     fillCxt();
     getBooksIdAndShow();
