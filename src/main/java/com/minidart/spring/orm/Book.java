@@ -80,4 +80,7 @@ public class Book {
     public void setReadAlready(boolean readAlready) {
         this.readAlready = readAlready;
     }
+    public boolean isValid(){
+        return title!=null&&description!=null&&author!=null&&isbn!=null&&printYear!=0;
+    }
 }

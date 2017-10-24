@@ -27,6 +27,7 @@
         <p><button id="search_button">Найти</button></p>
     </div>
     <div class="books-wrapper">
+        <div class="books-wrapper-head">
         <div class="sort">
             Сортировать по:
             <select id="sort_select">
@@ -36,6 +37,10 @@
                 <option value="yearDesc">По году с наиболее позднего</option>
             </select>
         </div>
+            <div class="add-button">
+                <button id="new_book_button">Добаввить книгу</button>
+            </div>
+        </div>
         <div class="top-list-wrapper">
 
         </div>
@@ -44,6 +49,34 @@
             <div id="page"></div>
             <div id="right_button" class="button">Вперёд</div>
         </div>
+    </div>
+</div>
+<div id="new_book_form" class="back">
+    <div class="form">
+        <table>
+            <tr>
+                <td>Автор:</td>
+                <td><input id="new_author" type="text"></td>
+            </tr>
+            <tr>
+                <td>Название:</td>
+                <td><input id="new_title" type="text"></td>
+            </tr>
+            <tr>
+                <td>ISBN:</td>
+                <td><input id="new_isbn" type="text"></td>
+            </tr>
+            <tr>
+                <td>Год издания:</td>
+                <td><input id="new_print_year" type="text"></td>
+            </tr>
+        </table>
+        <p>Описание:</p>
+        <textarea id="new_description"></textarea>
+        <div class="submit">
+            <button id="new_book_submit">Добавить книгу</button>
+        </div>
+        <div class="cancel">X</div>
     </div>
 </div>
 <c:import url="footer.jsp"/>

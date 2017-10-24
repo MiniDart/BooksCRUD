@@ -1,9 +1,9 @@
 package com.minidart.spring.orm;
 
 import com.minidart.spring.containers.GetBooksContainer;
-import com.minidart.spring.containers.PutContainer;
 import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +18,15 @@ public class BookServiceImpl implements BookService {
     private SessionFactory sessionFactory;
 
     @Override
-    public void save(Book book) {
-
+    public ResponseContainer save(Book book) {
+        ResponseContainer container=new ResponseContainer();
+        if (!book.isValid()) {
+            container.setStatus("Error");
+            return container;
+        }
+        sessionFactory.getCurrentSession().persist(book);
+        container.setStatus("OK");
+        return container;
     }
 
     @Override
@@ -64,13 +71,21 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public ResponseContainer update(PutContainer container) {
+    public ResponseContainer update(Book upBook) {
+        Session session=sessionFactory.getCurrentSession();
         ResponseContainer responseContainer=new ResponseContainer();
-        if (container.isReadAlready()){
-            String query="UPDATE Book AS b set b.readAlready=true WHERE b.id=:id";
-            int count=sessionFactory.getCurrentSession().createQuery(query).setParameter("id",container.getId())
-            .executeUpdate();
-            responseContainer.setCount(count);
+        Book book=session.get(Book.class,upBook.getId());
+        if (upBook.isReadAlready()&&!book.isReadAlready()){
+           book.setReadAlready(true);
+            responseContainer.setStatus("OK");
+        }
+        else {
+            if (upBook.getTitle()!=null) book.setTitle(upBook.getTitle());
+            if (upBook.getDescription()!=null) book.setDescription(upBook.getDescription());
+            if (upBook.getIsbn()!=null) book.setIsbn(upBook.getIsbn());
+            if (upBook.getPrintYear()!=0) book.setPrintYear(upBook.getPrintYear());
+            book.setReadAlready(false);
+            responseContainer.setStatus("OK");
         }
         return responseContainer;
     }

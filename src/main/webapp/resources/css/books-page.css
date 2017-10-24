@@ -20,9 +20,17 @@
 .books-wrapper{
     width: 85vw;
 }
+.books-wrapper-head{
+    display: flex;
+    border-bottom: 1px solid white;
+}
 .books-wrapper .sort{
     padding: 2vh 0 1vh 2vw;
-    border-bottom: 1px solid white;
+    flex-grow: 9;
+}
+.books-wrapper-head .add-button{
+    flex-grow: 1;
+    padding: 2vh 0 1vh 0;
 }
 .list-wrapper{
     display: flex;
@@ -86,4 +94,47 @@
 }
 #right_button{
     margin-left: 1vw;
+}
+.back{
+    display: none;
+    position: fixed;
+    top:0;
+    left: 0;
+    background: rgba(15,15,41,0.51);
+    width: 100vw;
+    height: 100vh;
+}
+.back .form{
+    padding: 2vh 2vw 2vh 2vw;
+    width: 40vw;
+    height: 70vh;
+    position: absolute;
+    top:15vh;
+    left: 30vw;
+    background: gray;
+}
+.back .form td{
+    padding: 1vh 0 1vh 0;
+}
+.back .form p{
+    margin-bottom: 2vh;
+    margin-top: 1vh;
+}
+.back textarea{
+    width: 30vw;
+    height: 30vh;
+}
+.back .form input{
+    width: 20vw;
+    height: 2vh;
+}
+.back .submit{
+    text-align: right;
+    margin-top: 2vh;
+}
+.back .form .cancel{
+    background: red;
+    position: absolute;
+    right: 0;
+    top:0;
 }

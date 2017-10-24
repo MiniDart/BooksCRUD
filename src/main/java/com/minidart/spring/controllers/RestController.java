@@ -2,7 +2,6 @@ package com.minidart.spring.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.minidart.spring.containers.GetBooksContainer;
-import com.minidart.spring.containers.PutContainer;
 import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
 import com.minidart.spring.orm.Book;
@@ -53,9 +52,13 @@ public class RestController {
         return bookService.getBooks(container);
     }
     @RequestMapping(value = "books",method = RequestMethod.PUT)
-    public ResponseContainer putBook(@RequestBody PutContainer container){
-        ResponseContainer responseContainer=bookService.update(container);
+    public ResponseContainer putBook(@RequestBody Book book){
+        ResponseContainer responseContainer=bookService.update(book);
         responseContainer.setStatus("OK");
         return responseContainer;
+    }
+    @RequestMapping(value = "books",method = RequestMethod.POST)
+    public ResponseContainer addBook(@RequestBody Book book){
+        return bookService.save(book);
     }
 }

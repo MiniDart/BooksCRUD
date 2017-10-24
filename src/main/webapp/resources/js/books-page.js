@@ -78,6 +78,19 @@ function putData(data,callback) {
 }
 
 
+function addNewBook(data) {
+    $.ajax({
+        url:home+"/app/rest/books",
+        type:"POST",
+        data:JSON.stringify(data),
+        success:function (data) {
+            console.log(data);
+        },
+        contentType:"application/json"
+    })
+}
+
+
 function renderBooks(books) {
     var listWrapper=$("<div class='list-wrapper'></div>");
     if (books.length==0) listWrapper.append($("<p>По вашему запросу ничего не найдено</p>"));
@@ -150,6 +163,13 @@ function showBooks() {
 
 }
 
+function hideForm(formId) {
+    var form=$("#"+formId);
+    form.find("input").val("");
+    form.find("textarea").val("");
+    form.hide();
+
+}
 
 function showButtonsAndPage() {
     var rightButton=$("#right_button");
@@ -196,6 +216,28 @@ function initialization() {
         page=1;
         cxt.sort=$(this).val();
         getBooksIdAndShow();
+    });
+    $("#new_book_button").on("click",function (e) {
+        $("#new_book_form").show();
+    });
+    $("#new_book_submit").on("click",function (e) {
+       var newBook={};
+       newBook.author=$("#new_author").val();
+       newBook.title=$("#new_title").val();
+       newBook.isbn=$("#new_isbn").val();
+       newBook.printYear=$("#new_print_year").val();
+       newBook.description=$("#new_description").val();
+       for (var key in newBook){
+           if (newBook[key].length==0){
+               alert("Вы не зполнили поле "+key);
+               return;
+           }
+       }
+       addNewBook(newBook);
+        hideForm("new_book_form");
+    });
+    $("#new_book_form .cancel").on("click",function (e) {
+        hideForm("new_book_form");
     });
     page=1;
     fillCxt();

@@ -20,3 +20,7 @@ footer{
     border-top: 1px solid white;
     height: 5vh;
 }
+button{
+    cursor: pointer;
+    font-size: 1rem;
+}
