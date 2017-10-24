@@ -1,6 +1,7 @@
 package com.minidart.spring.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.minidart.spring.containers.GetBooksContainer;
 import com.minidart.spring.containers.PutContainer;
 import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
@@ -42,14 +43,14 @@ public class RestController {
     }
     @RequestMapping(value = "books",method = RequestMethod.GET)
     public List<Book> getBooksList(@RequestParam(value = "param") String param){
-        Integer[] idList;
+        GetBooksContainer container;
         try {
-            idList=new ObjectMapper().readValue(new StringReader(param),Integer[].class);
+            container=new ObjectMapper().readValue(new StringReader(param),GetBooksContainer.class);
         }
         catch (IOException e){
-            idList=null;
+            container=null;
         }
-        return bookService.getBooks(idList);
+        return bookService.getBooks(container);
     }
     @RequestMapping(value = "books",method = RequestMethod.PUT)
     public ResponseContainer putBook(@RequestBody PutContainer container){

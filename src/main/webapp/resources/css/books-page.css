@@ -46,7 +46,7 @@
     font-size: 0.7rem;
     border-right: 1px solid white;
 }
-.books-wrapper .book .text{
+.books-wrapper .list-wrapper .text{
     font-size: 1rem;
     text-align: center;
     padding: 1vh 1vw 1vh 1vw;
@@ -73,9 +73,11 @@
 }
 .button_wrapper div{
     border: 1px solid white;
+}
+.button_wrapper .button{
     cursor: pointer;
 }
-.button_wrapper div:hover{
+.button_wrapper .button:hover{
     background: white;
     color:#4a4c93;
 }

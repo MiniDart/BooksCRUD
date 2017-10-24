@@ -1,5 +1,6 @@
 package com.minidart.spring.orm;
 
+import com.minidart.spring.containers.GetBooksContainer;
 import com.minidart.spring.containers.PutContainer;
 import com.minidart.spring.containers.ResponseContainer;
 import com.minidart.spring.containers.SearchContainer;
@@ -30,11 +31,6 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public List<Book> getBooksId(SearchContainer container) {
         container.checkValid();
-        String orderBy="ORDER BY ";
-        if (container.getSort().equals("author")) orderBy+="b.author";
-        else if (container.getSort().equals("authorDesc")) orderBy+="b.author DESC";
-        else if (container.getSort().equals("year")) orderBy+="b.printYear";
-        else if (container.getSort().equals("yearDesc")) orderBy+="b.printYear DESC";
         String query;
         if (container.hasFilters()) {
             query = "FROM Book AS b WHERE ";
@@ -52,17 +48,18 @@ public class BookServiceImpl implements BookService {
             }
         }
         else query="FROM Book b ";
-        query+=orderBy;
+        query+=getOrderBy(container.getSort());
         return sessionFactory.getCurrentSession().createQuery(query).list();
     }
 
     @Override
-    public List<Book> getBooks(Integer[] idList) {
+    public List<Book> getBooks(GetBooksContainer container) {
         StringBuilder builder=new StringBuilder("FROM Book as b WHERE b.id IN (");
-        for (int i=0;i<idList.length-1;i++){
-            builder.append(idList[i]+", ");
+        for (int i=0;i<container.getIdList().size()-1;i++){
+            builder.append(container.getIdList().get(i)+", ");
         }
-        builder.append(idList[idList.length-1]+")");
+        builder.append(container.getIdList().get(container.getIdList().size()-1)+") ");
+        builder.append(getOrderBy(container.getSort()));
         return sessionFactory.getCurrentSession().createQuery(builder.toString()).list();
     }
 
@@ -76,5 +73,13 @@ public class BookServiceImpl implements BookService {
             responseContainer.setCount(count);
         }
         return responseContainer;
+    }
+    private String getOrderBy(String sort){
+        String orderBy="ORDER BY ";
+        if (sort.equals("author")) orderBy+="b.author";
+        else if (sort.equals("authorDesc")) orderBy+="b.author DESC";
+        else if (sort.equals("year")) orderBy+="b.printYear";
+        else if (sort.equals("yearDesc")) orderBy+="b.printYear DESC";
+        return orderBy;
     }
 }

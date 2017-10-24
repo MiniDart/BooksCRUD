@@ -17,9 +17,9 @@
     <div class="search-wrapper">
         <h2>Поиск</h2>
         <p>По автору:</p>
-        <p><input id="author_input" class="big_input" type="text" value="Пратчетт"></p>
+        <p><input id="author_input" class="big_input" type="text"></p>
         <p>По названию:</p>
-        <p><input id="title_input" class="big_input" type="text" value="Жнец"></p>
+        <p><input id="title_input" class="big_input" type="text"></p>
         <p>По ISBN:</p>
         <p><input id="isbn_input" class="big_input" type="text"></p>
         <p>По году издания:</p>
@@ -36,12 +36,13 @@
                 <option value="yearDesc">По году с наиболее позднего</option>
             </select>
         </div>
-        <div class="list-wrapper">
+        <div class="top-list-wrapper">
 
         </div>
         <div class="button_wrapper">
-            <div id="left_button">Назад</div>
-            <div id="right_button">Вперёд</div>
+            <div id="left_button" class="button">Назад</div>
+            <div id="page"></div>
+            <div id="right_button" class="button">Вперёд</div>
         </div>
     </div>
 </div>
