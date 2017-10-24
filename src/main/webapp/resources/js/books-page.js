@@ -93,7 +93,10 @@ function addNewBook(data) {
 function deleteBook(id) {
     $.ajax({
         url:home+"/app/rest/books/"+id,
-        type:"DELETE"
+        type:"DELETE",
+        success:function (e) {
+            getBooksIdAndShow();
+        }
     })
 }
 
@@ -117,7 +120,7 @@ function renderBooks(books) {
                 "<p>ISBN:</p>" +
                 "<p class='text'>"+book.isbn+"</p></td>" +
                 "<td><p>Статус:</p>" +
-                "<p class='text'>"+(book.readAlready?"Прочитано":"Не прочитано")+"</p></td></tr>" +
+                "<p class='text read'>"+(book.readAlready?"Прочитано":"Не прочитано")+"</p></td></tr>" +
                 "<tr><td colspan='3'><p class='text'>"+book.description+"</p></td></tr></table>"+
                 "</div></div>");
             var editBoxDom=$("<div class='edit_box'></div>");
@@ -127,6 +130,7 @@ function renderBooks(books) {
                     updateObj.readAlready=true;
                     var thisElement=this;
                     putData(updateObj,function (data) {
+                        $(thisElement).parent().parent().find(".read").text("Прочитано");
                         $(thisElement).remove();
                         updateObj.clear();
                     })
@@ -140,7 +144,6 @@ function renderBooks(books) {
                 .on("click",function (e) {
                     if (!confirm("Are you sure?")) return;
                     deleteBook($(this).attr("data-id"));
-                    getBooksIdAndShow();
                 }));
             bookDom.append(editBoxDom);
             listWrapper.append(bookDom);

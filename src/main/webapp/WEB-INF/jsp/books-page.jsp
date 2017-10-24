@@ -38,7 +38,7 @@
             </select>
         </div>
             <div class="add-button">
-                <button id="new_book_button">Добаввить книгу</button>
+                <button id="new_book_button">Добавить книгу</button>
             </div>
         </div>
         <div class="top-list-wrapper">
